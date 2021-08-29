@@ -1,0 +1,45 @@
+---
+title: "Palmer penguin analysis"
+author: "Dishali"
+date: "27/08/2021"
+output:
+  html_document:
+    df_print: paged
+  pdf_document: default
+---
+
+```{r setup, include= FALSE}
+knitr::opts_chunk$set(echo = FALSE, warning= FALSE)
+```
+
+## R Markdown
+
+This is an R Markdown document. Markdown is a simple formatting syntax for authoring HTML, PDF, and MS Word documents. For more details on using R Markdown click here[link](http://rmarkdown.rstudio.com)
+
+When you click the **Knit** button a document will be generated that includes both content as well as the output of any embedded R code chunks within the document. You can embed an R code chunk like this:
+
+```{r peguin plot}
+summary('penguins')
+```
+
+## Including Plots
+
+You can also embed plots, for example:
+
+![Plot this way](<img src="https://www.clipartmax.com/png/small/8-84392_symbol-image-arrow-down.png" alt="Symbol Image - Arrow Down @clipartmax.com">)
+```{r}
+install.packages('r packages', repos = "https://ggplot2.tidyverse.org/")
+library(ggplot2)
+library(palmerpenguins)
+data("penguins")
+```
+
+```{r penguins, echo=FALSE}
+
+ggplot(data=penguins) + geom_point(mapping= aes(x= bill_length_mm, y= bill_depth_mm))
+ggplot(data= penguins)+ geom_point(mapping = aes(x=flipper_length_mm, y= body_mass_g),color= "purple")
+ggplot(data= penguins)+ geom_smooth(mapping = aes(x=flipper_length_mm, y= body_mass_g) )
+
+```
+
+Note that the `echo = FALSE` parameter was added to the code chunk to prevent printing of the R code that generated the plot.
